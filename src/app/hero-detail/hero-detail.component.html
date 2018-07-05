@@ -1,0 +1,20 @@
+<div *ngIf="hero">
+  <h2>{{ hero.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+  </div>
+  <div>
+    <label>Abilities:</label>
+    <div *ngFor="let ability of availableAbilities" class="ability-list">
+      <input type="checkbox"
+             [value]="ability"
+             (change)="toggleAbility($event.target.value)"
+             [checked]="isChecked(ability)" /> {{ability}}
+    </div>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>
